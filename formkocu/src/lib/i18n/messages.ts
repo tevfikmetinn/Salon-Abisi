@@ -101,15 +101,15 @@ const en: Messages = {
       threeQuarterView: '¾ angle',
       howItWorks: 'How it works',
       howItWorksBody:
-        'MediaPipe detects 33 body landmarks in your browser. Angle-based analysis counts reps and checks form. No model training needed — just biomechanics.',
-      privacy: 'Where does your data go?',
+        'Turn on your camera. Start exercising. Get instant feedback on your form — right in your browser, instantly.',
+      privacy: 'Is my data safe?',
       privacyBody:
-        'Nowhere. Everything runs locally in your browser. Privacy by architecture, not policy.',
+        'Yes. Your video stays on your device — never uploaded, never recorded, never seen by anyone but you.',
       free: 'Is it free?',
       freeBody:
-        'Yes. Fully free, open source. No account, no signup, no ads.',
+        'Yes. Fully free, no account, no signup, no ads.',
       poseDemo: 'Pose detection demo',
-      footer: 'Built as a portfolio project. Open source on GitHub.',
+      footer: 'Open source on GitHub.',
     },
     exercise: {
       back: 'Exercises',
@@ -143,7 +143,7 @@ const en: Messages = {
     testPose: {
       title: 'Pose Detection Demo',
       subtitle:
-        'Live skeleton detection — verifies the underlying MediaPipe layer',
+        'Live pose detection — see how the app sees you',
       status: 'Status',
       statusIdle: 'idle',
       statusInit: 'initializing',
@@ -165,7 +165,7 @@ const en: Messages = {
         'Background: plain, still. A walking person nearby may be detected as another pose.',
       tipsCameraHeight: 'Camera height: hip-level is ideal for most exercises.',
       tipsModel:
-        'Model: pose_landmarker_full (Apache 2.0). 33 body landmarks, ~25ms inference.',
+        'Runs entirely in your browser. No data leaves your device.',
       criteria: 'Verification criteria',
       modeWebcam: 'Live camera',
       modeVideo: 'Upload video',
@@ -176,36 +176,36 @@ const en: Messages = {
   exercises: {
     squat: {
       displayName: 'Bodyweight Squat',
-      description: 'Air squat. Side view recommended.',
-      tagline: 'Stand sideways — knee angle is tracked.',
+      description: 'Air squat with side-view camera.',
+      tagline: 'Stand sideways and start squatting.',
       instructions: [
         'Stand sideways to the camera (face perpendicular)',
         '1.5-2.5 meters from the camera',
         'Camera at hip height',
-        'Legs (hip, knee, ankle) must be visible',
+        'Your legs should be in the frame',
       ],
     },
     pushup: {
       displayName: 'Push-up',
-      description: 'Classic push-up. Side or low-angle view.',
-      tagline: 'Get into push-up position — elbow angle is tracked.',
+      description: 'Classic push-up with side-view camera.',
+      tagline: 'Get into push-up position and start.',
       instructions: [
         'Get into push-up position facing the side',
         'Place camera on the side, close to the ground',
-        'Full body visible from side profile',
-        'Shoulders, elbows, wrists must be clearly visible',
+        'Full body visible from the side',
+        'Arms and torso should be in the frame',
       ],
     },
     curl: {
       displayName: 'Dumbbell Biceps Curl',
       description:
-        'Single or double dumbbell curl. The active arm is auto-detected.',
-      tagline: 'Hold a dumbbell — active arm is auto-tracked.',
+        'Single or double dumbbell curl. We track the active arm automatically.',
+      tagline: 'Hold a dumbbell and start curling.',
       instructions: [
         'Turn slightly toward the camera (30-45°)',
         '1.5-2 meters from the camera',
         'Camera at chest height',
-        'Upper body (shoulder, elbow, wrist) clearly visible',
+        'Your upper body should be in the frame',
       ],
     },
   },
@@ -235,15 +235,15 @@ const tr: Messages = {
       threeQuarterView: '¾ açı',
       howItWorks: 'Nasıl çalışır?',
       howItWorksBody:
-        'Tarayıcıda MediaPipe ile 33 vücut noktası tespit edilir. Açı tabanlı analiz ile tekrar sayılır ve form kontrol edilir. Model eğitimi yok — saf biyomekanik.',
-      privacy: 'Verin nereye gidiyor?',
+        'Kameranı aç. Egzersizini yap. Form geri bildirimini anında al — hepsi tarayıcında.',
+      privacy: 'Verim güvende mi?',
       privacyBody:
-        'Hiçbir yere. Tüm analiz tarayıcıda yapılır. Politika değil, mimari ile mahremiyet.',
+        'Evet. Video sadece senin cihazında kalır — sunucuya gönderilmez, kaydedilmez, kimse görmez.',
       free: 'Bedava mı?',
       freeBody:
-        'Evet. Tamamen ücretsiz, açık kaynak. Hesap yok, kayıt yok, reklam yok.',
+        'Evet. Tamamen ücretsiz, hesap yok, kayıt yok, reklam yok.',
       poseDemo: 'Pose tespit demosu',
-      footer: 'Portfolyo projesi olarak yapıldı. GitHub\'da açık kaynak.',
+      footer: 'GitHub\'da açık kaynak.',
     },
     exercise: {
       back: 'Egzersizler',
@@ -274,7 +274,7 @@ const tr: Messages = {
     testPose: {
       title: 'Pose Tespit Demosu',
       subtitle:
-        'Canlı iskelet tespiti — alttaki MediaPipe katmanını doğrular',
+        'Canlı pose tespiti — uygulamanın seni nasıl gördüğünü gör',
       status: 'Durum',
       statusIdle: 'beklemede',
       statusInit: 'başlatılıyor',
@@ -295,7 +295,7 @@ const tr: Messages = {
         'Arka plan: sade ve hareketsiz. Arkanda yürüyen biri "ikinci kişi" olarak algılanabilir.',
       tipsCameraHeight: 'Kamera yüksekliği: kalça hizası çoğu egzersiz için ideal.',
       tipsModel:
-        'Model: pose_landmarker_full (Apache 2.0). 33 vücut noktası, ~25ms inference.',
+        'Tamamen tarayıcında çalışır. Hiçbir veri cihazdan çıkmaz.',
       criteria: 'Doğrulama kriterleri',
       modeWebcam: 'Canlı kamera',
       modeVideo: 'Video yükle',
@@ -306,36 +306,36 @@ const tr: Messages = {
   exercises: {
     squat: {
       displayName: 'Bodyweight Squat',
-      description: 'Ağırlıksız squat. Yan profilden çekim önerilir.',
-      tagline: 'Yan dur — diz açısı tespit edilecek.',
+      description: 'Ağırlıksız squat — yan profilden çekim.',
+      tagline: 'Yan dur ve squat\'a başla.',
       instructions: [
         'Kameraya yan dur (yüzün yana baksın)',
         'Kameradan 1.5-2.5 metre uzakta',
         'Kamera kalça hizasında',
-        'Bacakların (kalça, diz, ayak bileği) görünür olmalı',
+        'Bacakların kareye sığsın',
       ],
     },
     pushup: {
       displayName: 'Şınav',
-      description: 'Klasik şınav. Yan profilden veya yere yakın açıdan.',
-      tagline: 'Şınav pozisyonu al — dirsek açısı tespit edilecek.',
+      description: 'Klasik şınav — yan profilden çekim.',
+      tagline: 'Şınav pozisyonu al ve başla.',
       instructions: [
         'Şınav pozisyonu al, yan profilini kameraya ver',
         'Kamerayı yan tarafa, yere yakın koy',
         'Tüm vücudun yan profilden görünsün',
-        'Omuz, dirsek, bilek net görünür olmalı',
+        'Kollar ve gövde kareye sığsın',
       ],
     },
     curl: {
       displayName: 'Dambıl Biceps Curl',
       description:
-        'Tek veya çift dambılla biceps curl. Aktif kol otomatik tespit edilir.',
-      tagline: 'Dambılı tut — aktif kol otomatik takip edilir.',
+        'Tek veya çift dambıl ile biceps curl. Aktif kolunu otomatik buluruz.',
+      tagline: 'Dambılı tut ve curl yapmaya başla.',
       instructions: [
         'Kameraya hafif yan dön (30-45°)',
         'Kameradan 1.5-2 metre uzakta',
         'Kamera göğüs hizasında',
-        'Üst vücudun (omuz, dirsek, bilek) net görünsün',
+        'Üst vücudun kareye sığsın',
       ],
     },
   },
