@@ -156,12 +156,12 @@ React renderer kullanmayız — her frame'de canvas'a çiziyoruz, virtual DOM'a 
 **Yapılandırma:**
 ```json
 {
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "exactOptionalPropertyTypes": true
-  }
+ "compilerOptions": {
+ "strict": true,
+ "noUncheckedIndexedAccess": true,
+ "noImplicitOverride": true,
+ "exactOptionalPropertyTypes": true
+ }
 }
 ```
 

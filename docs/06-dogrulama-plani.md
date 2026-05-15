@@ -28,13 +28,13 @@ Her katmanı **sırayla** geçeriz. Önceki katmanı atlamadan sonrakine geçilm
 ```typescript
 // angles.test.ts
 describe('angleBetween', () => {
-  it('returns 90° for perpendicular vectors', () => {
-    expect(angleBetween({x:0,y:0}, {x:1,y:0}, {x:1,y:1})).toBeCloseTo(90)
-  })
-  it('returns 180° for collinear opposite vectors', () => {
-    expect(angleBetween({x:-1,y:0}, {x:0,y:0}, {x:1,y:0})).toBeCloseTo(180)
-  })
-  // ... edge cases
+ it('returns 90° for perpendicular vectors', () => {
+ expect(angleBetween({x:0,y:0}, {x:1,y:0}, {x:1,y:1})).toBeCloseTo(90)
+ })
+ it('returns 180° for collinear opposite vectors', () => {
+ expect(angleBetween({x:-1,y:0}, {x:0,y:0}, {x:1,y:0})).toBeCloseTo(180)
+ })
+ // ... edge cases
 })
 ```
 
@@ -42,14 +42,14 @@ describe('angleBetween', () => {
 ```typescript
 // squat-rules.test.ts
 describe('Squat R1 (depth)', () => {
-  it('passes when hip below knee', () => {
-    const landmarks = mockSquatBottom({ hipY: 0.6, kneeY: 0.5 })
-    expect(evaluateRule(squatRules.depth, landmarks)).toEqual({ severity: 'green' })
-  })
-  it('fails when hip well above knee', () => {
-    const landmarks = mockSquatBottom({ hipY: 0.3, kneeY: 0.5 })
-    expect(evaluateRule(squatRules.depth, landmarks)).toEqual({ severity: 'red' })
-  })
+ it('passes when hip below knee', () => {
+ const landmarks = mockSquatBottom({ hipY: 0.6, kneeY: 0.5 })
+ expect(evaluateRule(squatRules.depth, landmarks)).toEqual({ severity: 'green' })
+ })
+ it('fails when hip well above knee', () => {
+ const landmarks = mockSquatBottom({ hipY: 0.3, kneeY: 0.5 })
+ expect(evaluateRule(squatRules.depth, landmarks)).toEqual({ severity: 'red' })
+ })
 })
 ```
 
@@ -57,14 +57,14 @@ describe('Squat R1 (depth)', () => {
 ```typescript
 // state-machine.test.ts
 it('counts 5 reps for 5 squat cycles', () => {
-  const frames = simulateSquatCycles(5)
-  const sm = new RepStateMachine(squatStateMachineConfig)
-  let repCount = 0
-  for (const frame of frames) {
-    const { repCompleted } = sm.transition(frame)
-    if (repCompleted) repCount++
-  }
-  expect(repCount).toBe(5)
+ const frames = simulateSquatCycles(5)
+ const sm = new RepStateMachine(squatStateMachineConfig)
+ let repCount = 0
+ for (const frame of frames) {
+ const { repCompleted } = sm.transition(frame)
+ if (repCompleted) repCount++
+ }
+ expect(repCount).toBe(5)
 })
 ```
 
@@ -96,21 +96,21 @@ Kendi videolarını çek:
 Her video için bir JSON dosyası:
 ```json
 {
-  "videoFile": "squat-correct-001.mp4",
-  "exerciseId": "squat",
-  "expectedReps": 5,
-  "expectedViolations": [],
-  "notes": "İdeal form, derinlik tam, sırt dik"
+ "videoFile": "squat-correct-001.mp4",
+ "exerciseId": "squat",
+ "expectedReps": 5,
+ "expectedViolations": [],
+ "notes": "İdeal form, derinlik tam, sırt dik"
 }
 
 {
-  "videoFile": "squat-shallow-001.mp4",
-  "exerciseId": "squat",
-  "expectedReps": 5,
-  "expectedViolations": [
-    { "ruleId": "depth", "severity": "red", "minOccurrences": 4 }
-  ],
-  "notes": "Yarım squat, derinlik kuralı 5 rep'in 4'ünde ihlal edilmeli"
+ "videoFile": "squat-shallow-001.mp4",
+ "exerciseId": "squat",
+ "expectedReps": 5,
+ "expectedViolations": [
+ { "ruleId": "depth", "severity": "red", "minOccurrences": 4 }
+ ],
+ "notes": "Yarım squat, derinlik kuralı 5 rep'in 4'ünde ihlal edilmeli"
 }
 ```
 
@@ -126,8 +126,8 @@ pnpm test:regression
 2. Sistemin ürettiği rep sayısını ve violations'ı topla
 3. Beklenenle karşılaştır
 4. Rapor üret:
-   - Test başına PASS/FAIL
-   - Toplam metrikler
+ - Test başına PASS/FAIL
+ - Toplam metrikler
 
 ### Hedef Metrikler
 
@@ -234,10 +234,10 @@ Aradığımız kişi:
 - Ekran kaydı al (kullanıcı izni ile)
 - Sesli kayıt al (think-aloud protocol: kullanıcı düşüncelerini söyleyecek)
 - Gözlem notları:
-  - Hangi adımda duraksadı?
-  - Hangi mesaj kafa karıştırıcıydı?
-  - Tamamlama süresi?
-  - Tamamlayabildi mi?
+ - Hangi adımda duraksadı?
+ - Hangi mesaj kafa karıştırıcıydı?
+ - Tamamlama süresi?
+ - Tamamlayabildi mi?
 
 #### Post-test (10 dk)
 - "Ne hissettin?"
@@ -311,11 +311,11 @@ Aradığımız kişi:
 ## Başarı Tanımı (MVP Sonu)
 
 **MVP başarılı sayılır eğer:**
-1. ✅ Seviye 1: tüm testler geçiyor, coverage hedefleri tutuyor
-2. ✅ Seviye 2: TPR %85+, FPR %10-, rep doğruluğu %95+
-3. ✅ Seviye 3: en az 1 uzmandan yazılı onay
-4. ✅ Seviye 4: 5 kullanıcı testinde NPS ≥ 7
-5. ✅ Vercel'de canlı, çalışıyor, paylaşılabilir
-6. ✅ GitHub'da temiz, dokümante, profesyonel
+1. Seviye 1: tüm testler geçiyor, coverage hedefleri tutuyor
+2. Seviye 2: TPR %85+, FPR %10-, rep doğruluğu %95+
+3. Seviye 3: en az 1 uzmandan yazılı onay
+4. Seviye 4: 5 kullanıcı testinde NPS ≥ 7
+5. Vercel'de canlı, çalışıyor, paylaşılabilir
+6. GitHub'da temiz, dokümante, profesyonel
 
 **Bu 6 madde tamamsa MVP "tamamlandı" demektir.** Hâlâ iyileştirilebilir ama "yayınlanabilir, gösterilebilir, CV'ye konabilir" durumdadır.

@@ -2,7 +2,7 @@
 
 > Free, in-browser exercise form analysis. Your video never leaves your device.
 
-## 🚀 Live demo
+## Live demo
 
 - **Primary:** [salon-abisi.pages.dev](https://salon-abisi.pages.dev) (Cloudflare Pages)
 - **Mirror:** [tevfikmetinn.github.io/Salon-Abisi](https://tevfikmetinn.github.io/Salon-Abisi/) (GitHub Pages)
@@ -63,10 +63,10 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Other scripts
 
 ```bash
-npm run build         # production build (static export → out/)
-npm run test          # tests in watch mode
-npm run test:run      # tests, single run
-npm run lint          # eslint
+npm run build # production build (static export → out/)
+npm run test # tests in watch mode
+npm run test:run # tests, single run
+npm run lint # eslint
 ```
 
 ## Project structure
@@ -74,16 +74,16 @@ npm run lint          # eslint
 ```
 Salon-Abisi/
 ├── README.md
-├── FUTURE.md                    # planned improvements
-├── docs/                        # design docs (currently in Turkish)
-├── .github/workflows/           # CI / GitHub Pages deploy
-└── formkocu/                    # Next.js app
-    └── src/
-        ├── app/                 # pages
-        ├── core/                # engine: pose, exercise, math
-        ├── exercises/           # plugins: squat, pushup, curl
-        ├── lib/i18n/            # EN/TR translations
-        └── components/
+├── FUTURE.md # planned improvements
+├── docs/ # design docs (currently in Turkish)
+├── .github/workflows/ # CI / GitHub Pages deploy
+└── formkocu/ # Next.js app
+ └── src/
+ ├── app/ # pages
+ ├── core/ # engine: pose, exercise, math
+ ├── exercises/ # plugins: squat, pushup, curl
+ ├── lib/i18n/ # EN/TR translations
+ └── components/
 ```
 
 ## Roadmap

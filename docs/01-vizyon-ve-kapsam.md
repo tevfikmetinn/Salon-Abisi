@@ -67,19 +67,19 @@ Anahtar fark: **Kara kutu bir ML modeli değil.** MediaPipe ile vücut noktalar�
 
 Aşağıdakiler **MVP'de yok**. Hayır demek "yok" demek. v2/v3'e bırakılır.
 
-- ❌ Mobil uygulama (web responsive var ama mobil-first değil)
-- ❌ Kullanıcı hesabı, kayıt, giriş
-- ❌ Geçmiş kayıtların depolanması (her oturum bağımsız)
-- ❌ Antrenman programı, takvim, planlama
-- ❌ Kalori takibi, kilo takibi, vücut ölçümleri
-- ❌ Sosyal özellikler (paylaşım, arkadaş, lider tablosu)
-- ❌ Çoklu açı seçimi (her egzersiz için tek en iyi açı dayatılır)
-- ❌ Salon ekipmanı gerektiren egzersizler (bench press, lat pulldown, barfiks)
-- ❌ Ağırlıklı squat / deadlift / overhead press (advanced, sakatlanma riski yüksek)
-- ❌ Yoga / stretching / cardio analizi
-- ❌ Ses komutu / sesli geri bildirim (v2)
-- ❌ Çoklu kişi tespiti (tek kullanıcı kareye)
-- ❌ Çoklu dil (Türkçe başlangıç)
+- Mobil uygulama (web responsive var ama mobil-first değil)
+- Kullanıcı hesabı, kayıt, giriş
+- Geçmiş kayıtların depolanması (her oturum bağımsız)
+- Antrenman programı, takvim, planlama
+- Kalori takibi, kilo takibi, vücut ölçümleri
+- Sosyal özellikler (paylaşım, arkadaş, lider tablosu)
+- Çoklu açı seçimi (her egzersiz için tek en iyi açı dayatılır)
+- Salon ekipmanı gerektiren egzersizler (bench press, lat pulldown, barfiks)
+- Ağırlıklı squat / deadlift / overhead press (advanced, sakatlanma riski yüksek)
+- Yoga / stretching / cardio analizi
+- Ses komutu / sesli geri bildirim (v2)
+- Çoklu kişi tespiti (tek kullanıcı kareye)
+- Çoklu dil (Türkçe başlangıç)
 
 ## Başarı Kriterleri
 

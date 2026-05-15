@@ -18,23 +18,23 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 
 ### Görevler
 1. **Next.js 14 projesi başlat:**
-   ```
-   pnpm create next-app@latest formkocu --typescript --tailwind --app --eslint
-   ```
+ ```
+ pnpm create next-app@latest formkocu --typescript --tailwind --app --eslint
+ ```
 2. **shadcn/ui kurulumu** (`npx shadcn-ui@latest init`)
 3. **Git repo + ilk commit + GitHub'a push**
 4. **README placeholder oluştur** (proje adı + kısa açıklama)
 5. **Husky + lint-staged + prettier ayarla** (pre-commit hook)
 6. **MediaPipe Tasks Vision ekle:**
-   ```
-   pnpm add @mediapipe/tasks-vision
-   ```
+ ```
+ pnpm add @mediapipe/tasks-vision
+ ```
 7. **Model dosyalarını public/models/ altına indir** (Pose Landmarker lite)
 8. **Basit bir `/test` sayfası:**
-   - `<video>` elementine webcam stream bağla
-   - MediaPipe ile her frame'de pose tespiti
-   - Canvas overlay üzerinde 33 noktayı daire olarak çiz
-   - Eklemleri çizgi olarak bağla
+ - `<video>` elementine webcam stream bağla
+ - MediaPipe ile her frame'de pose tespiti
+ - Canvas overlay üzerinde 33 noktayı daire olarak çiz
+ - Eklemleri çizgi olarak bağla
 
 ### Öğrenilecekler
 - Next.js 14 App Router temelleri (server components vs client components)
@@ -45,14 +45,14 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 - Canvas API temelleri (clearRect, beginPath, arc, stroke)
 
 ### Risk / Dikkat
-- ⚠️ **MediaPipe wasm yükleme:** Next.js SSR ile uyumsuz olabilir. `dynamic import` + `ssr: false` kullan.
-- ⚠️ **Webcam izni:** localhost dışında HTTPS gerekir. Vercel deploy'da otomatik.
-- ⚠️ **Memory leak:** useEffect cleanup yazılmadığında 5dk içinde tab donar. Her stream/detector için dispose çağır.
+- **MediaPipe wasm yükleme:** Next.js SSR ile uyumsuz olabilir. `dynamic import` + `ssr: false` kullan.
+- **Webcam izni:** localhost dışında HTTPS gerekir. Vercel deploy'da otomatik.
+- **Memory leak:** useEffect cleanup yazılmadığında 5dk içinde tab donar. Her stream/detector için dispose çağır.
 
 ### Doğrulama
-- Webcam aç → kendi üzerinde iskelet çiziliyor mu? ✓
-- Tab'i 10dk açık bırak → FPS düşmüyor mu? ✓
-- Sayfa yenile → wasm yeniden yükleniyor ama hata yok ✓
+- Webcam aç → kendi üzerinde iskelet çiziliyor mu?
+- Tab'i 10dk açık bırak → FPS düşmüyor mu?
+- Sayfa yenile → wasm yeniden yükleniyor ama hata yok
 
 ---
 
@@ -63,23 +63,23 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 
 ### Görevler
 1. **Klasör yapısını oluştur:**
-   ```
-   src/core/pose-detection/
-   src/core/frame-source/
-   src/core/math/
-   ```
+ ```
+ src/core/pose-detection/
+ src/core/frame-source/
+ src/core/math/
+ ```
 2. **TypeScript tipleri yaz:**
-   - `Landmark` (x, y, z, visibility)
-   - `PoseLandmarks` (33 landmark + meta)
-   - `Frame` (ImageData wrapper)
+ - `Landmark` (x, y, z, visibility)
+ - `PoseLandmarks` (33 landmark + meta)
+ - `Frame` (ImageData wrapper)
 3. **`PoseDetector` interface + `MediaPipePoseDetector` implementasyonu**
 4. **`FrameSource` interface:**
-   - `WebcamSource` implementasyonu
-   - `VideoFileSource` implementasyonu (HTML video element wrapper)
+ - `WebcamSource` implementasyonu
+ - `VideoFileSource` implementasyonu (HTML video element wrapper)
 5. **`/test` sayfasını refactor et** — yeni adapter'lar üzerinden çalışsın
 6. **Video upload UI ekle** — kullanıcı .mp4 yüklesin, aynı flow çalışsın
 7. **Vitest kurulumu + ilk birim testleri:**
-   - `core/math/angles.ts` için 5-10 test
+ - `core/math/angles.ts` için 5-10 test
 
 ### Öğrenilecekler
 - TypeScript interface + implementation pattern
@@ -89,13 +89,13 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 - Vitest temelleri
 
 ### Risk / Dikkat
-- ⚠️ **API stabilitesi:** Bu hafta yazdığın interface'ler ileride değiştirilirse her şey kırılır. Tasarımı düşün, acele etme.
-- ⚠️ **Performance:** PoseDetector her frame'de instance yaratmıyor, tek instance reuse ediliyor olsun.
+- **API stabilitesi:** Bu hafta yazdığın interface'ler ileride değiştirilirse her şey kırılır. Tasarımı düşün, acele etme.
+- **Performance:** PoseDetector her frame'de instance yaratmıyor, tek instance reuse ediliyor olsun.
 
 ### Doğrulama
-- Webcam VEYA yüklenen video, **aynı `/test` sayfasında**, aynı kod akışıyla pose çıktısı veriyor ✓
-- Birim testler geçiyor ✓
-- 30+ FPS hâlâ stabil ✓
+- Webcam VEYA yüklenen video, **aynı `/test` sayfasında**, aynı kod akışıyla pose çıktısı veriyor
+- Birim testler geçiyor
+- 30+ FPS hâlâ stabil
 
 ---
 
@@ -107,19 +107,19 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 ### Görevler
 1. **`core/exercise-engine/types.ts`:** ExerciseDefinition, Rule, Violation, RepState interface'leri
 2. **`core/math/` klasörünü tamamla:**
-   - `angles.ts` — 3 nokta arası açı
-   - `geometry.ts` — mesafe, projeksiyon, perpendicular distance
-   - `stats.ts` — stdev, mean, moving average
+ - `angles.ts` — 3 nokta arası açı
+ - `geometry.ts` — mesafe, projeksiyon, perpendicular distance
+ - `stats.ts` — stdev, mean, moving average
 3. **`StateMachine.ts`:** Generic state machine engine
 4. **`exercises/squat.ts`:** İlk plugin
-   - Camera setup config (yan profil, 2m, vb.)
-   - Visibility checks (omuz-kalça-diz-ayak görünürlük)
-   - State machine config (STANDING → DESCENDING → BOTTOM → ASCENDING)
-   - Rules: **boş bırak** (hafta 4'te dolduracağız)
+ - Camera setup config (yan profil, 2m, vb.)
+ - Visibility checks (omuz-kalça-diz-ayak görünürlük)
+ - State machine config (STANDING → DESCENDING → BOTTOM → ASCENDING)
+ - Rules: **boş bırak** (hafta 4'te dolduracağız)
 5. **`exercises/index.ts`:** registry oluştur
 6. **Yeni UI:** `/exercise/squat` sayfası — kameradan akış geliyor, ekranda "Rep: X" sayacı çalışıyor
 7. **Birim testler:**
-   - State machine farklı senaryolarla test (simüle landmark dizisi)
+ - State machine farklı senaryolarla test (simüle landmark dizisi)
 
 ### Öğrenilecekler
 - Plugin pattern (data-driven design)
@@ -128,12 +128,12 @@ Webcam'den canlı görüntü + üzerinde 33 noktalık iskelet overlay çalışan
 - Test fixture pattern (mock landmark dizileri)
 
 ### Risk / Dikkat
-- ⚠️ **State machine flickering:** Velocity sıfıra çok yaklaşınca state oscillate edebilir. Minimum frame sayısı + hysteresis ekle.
-- ⚠️ **Calibration:** "Standing baseline" oturum başında alınıyor — kullanıcı oturum başında düzgün dursun.
+- **State machine flickering:** Velocity sıfıra çok yaklaşınca state oscillate edebilir. Minimum frame sayısı + hysteresis ekle.
+- **Calibration:** "Standing baseline" oturum başında alınıyor — kullanıcı oturum başında düzgün dursun.
 
 ### Doğrulama
-- Webcam aç, squat yap → ekranda "Rep: 1, 2, 3..." artıyor ✓
-- 5 rep yaptıysan 5 göstermeli, 4 veya 6 değil ✓
+- Webcam aç, squat yap → ekranda "Rep: 1, 2, 3..." artıyor
+- 5 rep yaptıysan 5 göstermeli, 4 veya 6 değil
 - Yarım squat (yarı eğil → kalk) sayıyor mu? **Henüz kuralı yok, sayar.** Hafta 4'te düzelteceğiz.
 
 ---
@@ -151,10 +151,10 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 5. **UI: LiveFeedbackPanel** — sağ tarafta sticky panel, aktif mesaj
 6. **UI: RepCounter** — büyük rep sayısı
 7. **Rep aggregation:** Her rep tamamlandığında özet üret (`RepSummary`)
-8. **UI: Son rep özeti küçük badge** (✅ derinlik, ❌ sırt vb.)
+8. **UI: Son rep özeti küçük badge** ( derinlik, sırt vb.)
 9. **Birim testler:**
-   - Her squat kuralı için bilinen landmark senaryoları
-   - "Derin squat → derinlik kuralı geçer", "yarım squat → R1 ihlal"
+ - Her squat kuralı için bilinen landmark senaryoları
+ - "Derin squat → derinlik kuralı geçer", "yarım squat → R1 ihlal"
 
 ### Öğrenilecekler
 - Real-time veri akışında throttling (her frame'de DOM güncellemesi yapma)
@@ -162,14 +162,14 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 - Time-series veri toplama (rep boyunca açı geçmişi)
 
 ### Risk / Dikkat
-- ⚠️ **Eşik değerleri büyük ihtimalle yanlış başlangıçta.** Self-test ile ayarla.
-- ⚠️ **False positives:** Sistem sürekli kırmızı mesaj basıyorsa kullanıcı kaybeder güven. Tolerans biraz cömert tutsun, sonra sıkıştırırız.
+- **Eşik değerleri büyük ihtimalle yanlış başlangıçta.** Self-test ile ayarla.
+- **False positives:** Sistem sürekli kırmızı mesaj basıyorsa kullanıcı kaybeder güven. Tolerans biraz cömert tutsun, sonra sıkıştırırız.
 
 ### Doğrulama
-- Kendi videolarınla test (en az 3 doğru, 3 yanlış squat) ✓
-- Yarım squat → "Daha derine in" mesajı gözüküyor ✓
-- Aşırı öne eğilme → "Göğsünü dik tut" mesajı gözüküyor ✓
-- Tüm doğru rep'lerde yeşil onay alıyor ✓
+- Kendi videolarınla test (en az 3 doğru, 3 yanlış squat)
+- Yarım squat → "Daha derine in" mesajı gözüküyor
+- Aşırı öne eğilme → "Göğsünü dik tut" mesajı gözüküyor
+- Tüm doğru rep'lerde yeşil onay alıyor
 
 ---
 
@@ -180,25 +180,25 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 
 ### Görevler
 1. **PoseOverlay'i geliştir:**
-   - Segment bazlı renkler (uyum: omuz-dirsek-bilek üst kol; diz violation varsa kırmızı)
-   - Smooth interpolation (her frame'de %50 yeni + %50 önceki = jitter azalır)
-   - Drop shadow efekti
+ - Segment bazlı renkler (uyum: omuz-dirsek-bilek üst kol; diz violation varsa kırmızı)
+ - Smooth interpolation (her frame'de %50 yeni + %50 önceki = jitter azalır)
+ - Drop shadow efekti
 2. **SilhouetteGuide komponenti (Framer Motion):**
-   - SVG path olarak squat pozisyonunda insan silueti
-   - Animasyon: kameraya doğru yan dön → squat pozisyonu al → tekrar
+ - SVG path olarak squat pozisyonunda insan silueti
+ - Animasyon: kameraya doğru yan dön → squat pozisyonu al → tekrar
 3. **SetupWizard akışı:**
-   - Adım 1: "Kamerayı şuraya koy" (siluet animasyonu + metin)
-   - Adım 2: "Kareye gir" (canlı kamera + checklist, otomatik tıklanır)
-   - Adım 3: "Aydınlatma yeterli mi?" (otomatik tespit)
-   - Adım 4: "Hazır mısın?" → 3-2-1 countdown → egzersiz başlar
+ - Adım 1: "Kamerayı şuraya koy" (siluet animasyonu + metin)
+ - Adım 2: "Kareye gir" (canlı kamera + checklist, otomatik tıklanır)
+ - Adım 3: "Aydınlatma yeterli mi?" (otomatik tespit)
+ - Adım 4: "Hazır mısın?" → 3-2-1 countdown → egzersiz başlar
 4. **VisibilityCheck logic:**
-   - Tüm gerekli landmark'lar visible > 0.7 mı?
-   - Vücut çerçeve içinde mi?
-   - Yan profilde mi (omuz-kalça yatay mesafe küçük)?
+ - Tüm gerekli landmark'lar visible > 0.7 mı?
+ - Vücut çerçeve içinde mi?
+ - Yan profilde mi (omuz-kalça yatay mesafe küçük)?
 5. **UI: Polish pass**
-   - Renk paleti seç (yeşil = vibrant, kırmızı = uyarı ama dostane, mavi = nötr)
-   - Typography ölçeği (büyük başlıklar, okunaklı geri bildirim)
-   - Hover/focus state'leri
+ - Renk paleti seç (yeşil = vibrant, kırmızı = uyarı ama dostane, mavi = nötr)
+ - Typography ölçeği (büyük başlıklar, okunaklı geri bildirim)
+ - Hover/focus state'leri
 
 ### Öğrenilecekler
 - Framer Motion path animations + variants
@@ -207,13 +207,13 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 - shadcn/ui komponentlerini özelleştirme
 
 ### Risk / Dikkat
-- ⚠️ **Aşırı tasarım dürtüsü:** Bu hafta polish, ama saatlerini emmesin. Functional first.
-- ⚠️ **Animasyon performansı:** Framer Motion ağır animasyonlar low-end cihazda donar. `will-change` ve `transform-only` ile sınırlandır.
+- **Aşırı tasarım dürtüsü:** Bu hafta polish, ama saatlerini emmesin. Functional first.
+- **Animasyon performansı:** Framer Motion ağır animasyonlar low-end cihazda donar. `will-change` ve `transform-only` ile sınırlandır.
 
 ### Doğrulama
-- Bir arkadaşa link gönder → açıklama yapmadan ilk repini yapabiliyor mu? ✓
-- 60 yaşındaki birine göster, anlayabiliyor mu (test edemezsen hayal et)? ✓
-- Demo videosu çekmeye uygun görsel kalitede mi? ✓
+- Bir arkadaşa link gönder → açıklama yapmadan ilk repini yapabiliyor mu?
+- 60 yaşındaki birine göster, anlayabiliyor mu (test edemezsen hayal et)?
+- Demo videosu çekmeye uygun görsel kalitede mi?
 
 ---
 
@@ -229,23 +229,23 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 4. **SetupWizard for push-up:** kamera daha düşük, kullanıcı yatay
 5. **Camera angle differentiation:** SilhouetteGuide push-up için farklı animasyon
 6. **Birim testler:**
-   - Hip sag senaryosu → R1 ihlal
-   - Yarım push-up → R3 ihlal
-   - Flared elbows → R2 ihlal
+ - Hip sag senaryosu → R1 ihlal
+ - Yarım push-up → R3 ihlal
+ - Flared elbows → R2 ihlal
 
 ### Öğrenilecekler
 - Plugin pattern'in gerçek değeri (core kod değişmeden yeni egzersiz)
 - Body orientation tespiti (yatay vs dikey vücut)
 
 ### Risk / Dikkat
-- ⚠️ **Modified push-up + standart push-up aynı plugin'de mi ayrı mı?**
-  - Önerim: aynı plugin, state machine içinde "knee on floor?" tespiti, label rep accordingly.
-- ⚠️ **Düşük kamera açısı sorunu:** Yere yakın kamera, alt vücut görünmeyebilir. SetupWizard uyar.
+- **Modified push-up + standart push-up aynı plugin'de mi ayrı mı?**
+ - Önerim: aynı plugin, state machine içinde "knee on floor?" tespiti, label rep accordingly.
+- **Düşük kamera açısı sorunu:** Yere yakın kamera, alt vücut görünmeyebilir. SetupWizard uyar.
 
 ### Doğrulama
-- Push-up yap → rep sayılıyor, kurallar çalışıyor ✓
-- Kalçanı kasıtlı düşür → "Kalçan çöküyor" mesajı ✓
-- Yarım push-up → "Daha aşağıya in" mesajı ✓
+- Push-up yap → rep sayılıyor, kurallar çalışıyor
+- Kalçanı kasıtlı düşür → "Kalçan çöküyor" mesajı
+- Yarım push-up → "Daha aşağıya in" mesajı
 
 ---
 
@@ -267,13 +267,13 @@ Squat egzersizi tamamen çalışıyor. 4 kuralın hepsi (derinlik, sırt eğimi,
 - Sallama (variance) tespiti — `core/math/stats.ts` kullanımı
 
 ### Risk / Dikkat
-- ⚠️ **Tek kol vs iki kol curl:** MVP'de tek kol odaklı. İki kol simultaneous v2.
-- ⚠️ **Dambıl tespiti:** MediaPipe dambılı görmez, sadece bileği. Bilek pozisyonu yeterli ipucu.
+- **Tek kol vs iki kol curl:** MVP'de tek kol odaklı. İki kol simultaneous v2.
+- **Dambıl tespiti:** MediaPipe dambılı görmez, sadece bileği. Bilek pozisyonu yeterli ipucu.
 
 ### Doğrulama
-- 3 egzersiz çalışıyor, geçiş smooth ✓
-- Squat regression: hâlâ doğru çalışıyor ✓
-- Self-test seti: %85+ true positive ✓
+- 3 egzersiz çalışıyor, geçiş smooth
+- Squat regression: hâlâ doğru çalışıyor
+- Self-test seti: %85+ true positive
 
 ---
 
@@ -284,23 +284,23 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 
 ### Görevler
 1. **Landing page (`/`):**
-   - Hero: "Spora yeni mi başlıyorsun? Doğru formu öğren — ücretsiz, kayıt yok, kameran cihazdan çıkmıyor."
-   - 3 egzersiz kartı (resim + ad + açıklama)
-   - "Nasıl çalışır?" 3 adımlı animasyon
-   - FAQ accordion (5-7 soru)
-   - Footer (GitHub linki, hakkında, gizlilik)
+ - Hero: "Spora yeni mi başlıyorsun? Doğru formu öğren — ücretsiz, kayıt yok, kameran cihazdan çıkmıyor."
+ - 3 egzersiz kartı (resim + ad + açıklama)
+ - "Nasıl çalışır?" 3 adımlı animasyon
+ - FAQ accordion (5-7 soru)
+ - Footer (GitHub linki, hakkında, gizlilik)
 2. **Egzersiz seçim sayfası (`/exercises`):**
-   - 3 kart, hover'da tutorial preview
-   - "Yeni başlayan ipuçları" sidebar
+ - 3 kart, hover'da tutorial preview
+ - "Yeni başlayan ipuçları" sidebar
 3. **Tutorial overlay (her egzersizin ilk kullanımında):**
-   - 30 saniye animasyon: hareketi nasıl yapmalı (referans form)
-   - "Anladım, başla" butonu
+ - 30 saniye animasyon: hareketi nasıl yapmalı (referans form)
+ - "Anladım, başla" butonu
 4. **Hata durumları:**
-   - Kamera izni reddedildi → friendly mesaj + video upload alternatifi
-   - Tarayıcı uyumsuz → uyarı + Chrome öner
-   - Internet kesik (model indirilemedi) → retry
+ - Kamera izni reddedildi → friendly mesaj + video upload alternatifi
+ - Tarayıcı uyumsuz → uyarı + Chrome öner
+ - Internet kesik (model indirilemedi) → retry
 5. **Gizlilik sayfası (`/privacy`):**
-   - "Verin cihazdan çıkmaz" net bir şekilde açıkla
+ - "Verin cihazdan çıkmaz" net bir şekilde açıkla
 6. **404 ve hata sayfaları**
 
 ### Öğrenilecekler
@@ -310,13 +310,13 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 - A11y (erişilebilirlik) checklist
 
 ### Risk / Dikkat
-- ⚠️ **Aşırı feature açıklaması:** Landing page kısa olsun. 3 ekran kaydırma, daha fazla değil.
-- ⚠️ **Tutorial uzunluğu:** 30sn yeterli. 2dk olursa kimse izlemez.
+- **Aşırı feature açıklaması:** Landing page kısa olsun. 3 ekran kaydırma, daha fazla değil.
+- **Tutorial uzunluğu:** 30sn yeterli. 2dk olursa kimse izlemez.
 
 ### Doğrulama
 - **Test:** 2 farklı arkadaşına linki gönder, "uygulamayı dene, ben sana açıklamayacağım" de.
-  - Her ikisi de ilk rep'ini 5 dakikada yapabildi mi? ✓
-  - Hangi noktada takıldılar? → o noktayı düzelt.
+ - Her ikisi de ilk rep'ini 5 dakikada yapabildi mi?
+ - Hangi noktada takıldılar? → o noktayı düzelt.
 
 ---
 
@@ -327,23 +327,23 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 
 ### Görevler
 1. **Regression test seti oluştur:**
-   - Her egzersiz için kendi videolarını çek
-   - 10 doğru form + 10 farklı tipte yanlış form
-   - Otomatik test scripti: video → sistem analizi → beklenen sonuç karşılaştırması
+ - Her egzersiz için kendi videolarını çek
+ - 10 doğru form + 10 farklı tipte yanlış form
+ - Otomatik test scripti: video → sistem analizi → beklenen sonuç karşılaştırması
 2. **Metrikleri ölç:**
-   - True Positive Rate per kural
-   - False Positive Rate per kural
-   - Rep sayma doğruluğu
+ - True Positive Rate per kural
+ - False Positive Rate per kural
+ - Rep sayma doğruluğu
 3. **Uzman bul:**
-   - Instagram'da Türkçe konuşan fitness eğitmenleri ara
-   - LinkedIn personal trainer profilleri
-   - Üniversitende beden eğitimi bölümü hocaları
-   - 2-3 kişiye mesaj at, 1-2 cevap dön bekle
+ - Instagram'da Türkçe konuşan fitness eğitmenleri ara
+ - LinkedIn personal trainer profilleri
+ - Üniversitende beden eğitimi bölümü hocaları
+ - 2-3 kişiye mesaj at, 1-2 cevap dön bekle
 4. **Uzman oturumu (30-60 dk):**
-   - Sistemin verdiği örnek geri bildirimleri göster
-   - Her egzersiz için 2-3 örnek video çal
-   - Eşik değerleri birlikte ince ayar
-   - Eksik gördükleri hata tipleri var mı? (Not al, v2'ye)
+ - Sistemin verdiği örnek geri bildirimleri göster
+ - Her egzersiz için 2-3 örnek video çal
+ - Eşik değerleri birlikte ince ayar
+ - Eksik gördükleri hata tipleri var mı? (Not al, v2'ye)
 5. **Eşik ayarlamalarını commit et**
 6. **Bug listesini temizle** (GitHub Issues bu hafta sonu boş olsun)
 
@@ -353,14 +353,14 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 - Domain uzmanlarla görüş etme (önemli bir kariyer skill'i)
 
 ### Risk / Dikkat
-- ⚠️ **Uzman bulamama riski:** 1 hafta öncesinden mesaj atmaya başla (yani Hafta 8 sonunda).
-- ⚠️ **Uzman aşırı eleştirel olursa:** Kapsamı net çiz — "biz acemilere temel form, sen profesyonel sporcu gözüyle bakma". Yine de geri bildirimi v2'ye not et.
-- ⚠️ **Test seti küçük:** 20 video başlangıç. v2'de 50+ olabilir.
+- **Uzman bulamama riski:** 1 hafta öncesinden mesaj atmaya başla (yani Hafta 8 sonunda).
+- **Uzman aşırı eleştirel olursa:** Kapsamı net çiz — "biz acemilere temel form, sen profesyonel sporcu gözüyle bakma". Yine de geri bildirimi v2'ye not et.
+- **Test seti küçük:** 20 video başlangıç. v2'de 50+ olabilir.
 
 ### Doğrulama
-- En az 1 fitness eğitmeni "evet bu doğru çalışıyor" yazılı/sözlü onay verdi ✓
-- TPR > %85, FPR < %10 ✓
-- Rep sayma doğruluğu > %95 ✓
+- En az 1 fitness eğitmeni "evet bu doğru çalışıyor" yazılı/sözlü onay verdi
+- TPR > %85, FPR < %10
+- Rep sayma doğruluğu > %95
 
 ---
 
@@ -371,42 +371,42 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 
 ### Görevler
 1. **Performance audit:**
-   - Lighthouse → 90+ Performance, A11y, Best Practices, SEO
-   - Bundle size analizi (`@next/bundle-analyzer`)
-   - MediaPipe lazy load (egzersiz seçildiğinde indirilsin, landing'de değil)
+ - Lighthouse → 90+ Performance, A11y, Best Practices, SEO
+ - Bundle size analizi (`@next/bundle-analyzer`)
+ - MediaPipe lazy load (egzersiz seçildiğinde indirilsin, landing'de değil)
 2. **Responsive layout:**
-   - Tablet (768px-1024px) çalışsın
-   - Telefon için "bu deneyim laptop/desktop'ta daha iyi" uyarısı (full mobile destek MVP'de yok)
+ - Tablet (768px-1024px) çalışsın
+ - Telefon için "bu deneyim laptop/desktop'ta daha iyi" uyarısı (full mobile destek MVP'de yok)
 3. **SEO:**
-   - Meta tags her sayfada
-   - OG image (paylaşımda görsel)
-   - robots.txt, sitemap.xml
+ - Meta tags her sayfada
+ - OG image (paylaşımda görsel)
+ - robots.txt, sitemap.xml
 4. **Analytics (opsiyonel, gizlilik dostu):**
-   - Plausible veya Umami (privacy-friendly)
-   - Veya hiç koyma — MVP'de feedback formu yeterli
+ - Plausible veya Umami (privacy-friendly)
+ - Veya hiç koyma — MVP'de feedback formu yeterli
 5. **Geri bildirim formu:**
-   - Tally.so veya Google Forms embed
-   - "Bu uygulamayı nasıl buldun?" 3 soru
+ - Tally.so veya Google Forms embed
+ - "Bu uygulamayı nasıl buldun?" 3 soru
 6. **GitHub README polish:**
-   - Hero image (uygulamadan screenshot)
-   - "Live demo" linki
-   - Tech stack badges
-   - Setup talimatları (klon, kur, çalıştır)
-   - Kontribütör nasıl katkı sağlar
-   - LICENSE dosyası (MIT öner)
+ - Hero image (uygulamadan screenshot)
+ - "Live demo" linki
+ - Tech stack badges
+ - Setup talimatları (klon, kur, çalıştır)
+ - Kontribütör nasıl katkı sağlar
+ - LICENSE dosyası (MIT öner)
 7. **Demo videoları:**
-   - Her egzersiz için 30sn ekran kaydı
-   - Bir tane 90sn'lik ana demo (giriş → tutorial → 1 rep → feedback)
-   - YouTube'a yükle, README'e embed
+ - Her egzersiz için 30sn ekran kaydı
+ - Bir tane 90sn'lik ana demo (giriş → tutorial → 1 rep → feedback)
+ - YouTube'a yükle, README'e embed
 8. **Deploy:**
-   - Vercel'e production deploy
-   - Custom subdomain (formkocu.vercel.app)
-   - HTTPS doğrula
+ - Vercel'e production deploy
+ - Custom subdomain (formkocu.vercel.app)
+ - HTTPS doğrula
 9. **Yayın:**
-   - LinkedIn post (Türkçe + İngilizce versiyon)
-   - Reddit r/sideproject + r/SoloDevelopers
-   - Türkçe topluluklar: Discord grupları, Twitter
-   - Üniversitenin kariyer ofisine bildir
+ - LinkedIn post (Türkçe + İngilizce versiyon)
+ - Reddit r/sideproject + r/SoloDevelopers
+ - Türkçe topluluklar: Discord grupları, Twitter
+ - Üniversitenin kariyer ofisine bildir
 
 ### Öğrenilecekler
 - Performance optimization (Next.js spesifik)
@@ -415,15 +415,15 @@ Yabancı bir kullanıcı **link açar, hiç açıklama olmadan ilk rep'ini yapar
 - Build in public — kendi işini pazarlama
 
 ### Risk / Dikkat
-- ⚠️ **Launch day bugs:** Production'da localhost'ta görünmeyen bugs çıkar. 24 saat ilk gün hızlı yanıt ver.
-- ⚠️ **LinkedIn post tonu:** "Şu projeyi yaptım" değil "şu problemi çözmek için şunu yaptım". Hikaye anlat.
+- **Launch day bugs:** Production'da localhost'ta görünmeyen bugs çıkar. 24 saat ilk gün hızlı yanıt ver.
+- **LinkedIn post tonu:** "Şu projeyi yaptım" değil "şu problemi çözmek için şunu yaptım". Hikaye anlat.
 
 ### Doğrulama
-- Lighthouse 90+ ✓
-- 3 farklı cihazda (laptop Chrome, laptop Firefox, tablet) çalışıyor ✓
-- LinkedIn post yayınlandı ✓
-- İlk 50 kullanıcı tıklandı (Vercel analytics) ✓
-- En az 1 yabancı kullanıcıdan geri bildirim geldi ✓
+- Lighthouse 90+
+- 3 farklı cihazda (laptop Chrome, laptop Firefox, tablet) çalışıyor
+- LinkedIn post yayınlandı
+- İlk 50 kullanıcı tıklandı (Vercel analytics)
+- En az 1 yabancı kullanıcıdan geri bildirim geldi
 
 ---
 

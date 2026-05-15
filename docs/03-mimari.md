@@ -10,20 +10,20 @@ Bağımlılıklar tek yönlü akar: **UI → State → Engine → Adapters**. A�
 
 ```
 ┌──────────────────────────────────────────────┐
-│ 1. UI Layer (React Components)               │  ← kullanıcının gördüğü
+│ 1. UI Layer (React Components) │ ← kullanıcının gördüğü
 ├──────────────────────────────────────────────┤
-│ 2. State Management (Zustand stores)         │  ← UI ile core arasında köprü
+│ 2. State Management (Zustand stores) │ ← UI ile core arasında köprü
 ├──────────────────────────────────────────────┤
-│ 3. Exercise Engine                           │  ← saf TypeScript, test edilebilir
-│    - Rule Evaluator                          │
-│    - State Machine                           │
-│    - Feedback Generator                      │
+│ 3. Exercise Engine │ ← saf TypeScript, test edilebilir
+│ - Rule Evaluator │
+│ - State Machine │
+│ - Feedback Generator │
 ├──────────────────────────────────────────────┤
-│ 4. Exercise Definitions (Plugins)            │  ← veri olarak egzersizler
+│ 4. Exercise Definitions (Plugins) │ ← veri olarak egzersizler
 ├──────────────────────────────────────────────┤
-│ 5. Adapters                                  │
-│    - PoseDetector (MediaPipe wrapper)        │
-│    - FrameSource (Webcam, Video)             │
+│ 5. Adapters │
+│ - PoseDetector (MediaPipe wrapper) │
+│ - FrameSource (Webcam, Video) │
 └──────────────────────────────────────────────┘
 ```
 
@@ -50,29 +50,29 @@ Bağımlılıklar tek yönlü akar: **UI → State → Engine → Adapters**. A�
 ```typescript
 // usePoseStream: real-time landmark akışı
 {
-  currentLandmarks: Landmark[] | null,
-  fps: number,
-  isDetecting: boolean,
-  startDetection: (source: FrameSource) => void,
-  stopDetection: () => void,
+ currentLandmarks: Landmark[] | null,
+ fps: number,
+ isDetecting: boolean,
+ startDetection: (source: FrameSource) => void,
+ stopDetection: () => void,
 }
 
 // useExerciseSession: aktif egzersiz oturumu
 {
-  exerciseId: string | null,
-  currentState: RepState,
-  repCount: number,
-  currentViolations: Violation[],
-  repHistory: RepSummary[],
-  startSession: (exerciseId: string) => void,
-  endSession: () => SessionSummary,
+ exerciseId: string | null,
+ currentState: RepState,
+ repCount: number,
+ currentViolations: Violation[],
+ repHistory: RepSummary[],
+ startSession: (exerciseId: string) => void,
+ endSession: () => SessionSummary,
 }
 
 // useCameraSetup: kalibrasyon durumu
 {
-  step: 'positioning' | 'lighting' | 'visibility' | 'ready',
-  checks: SetupCheck[],
-  isReady: boolean,
+ step: 'positioning' | 'lighting' | 'visibility' | 'ready',
+ checks: SetupCheck[],
+ isReady: boolean,
 }
 ```
 
@@ -85,11 +85,11 @@ Bağımlılıklar tek yönlü akar: **UI → State → Engine → Adapters**. A�
 #### `RuleEvaluator`
 ```typescript
 class RuleEvaluator {
-  evaluate(
-    landmarks: Landmark[],
-    exerciseDef: ExerciseDefinition,
-    repContext: RepContext
-  ): Violation[]
+ evaluate(
+ landmarks: Landmark[],
+ exerciseDef: ExerciseDefinition,
+ repContext: RepContext
+ ): Violation[]
 }
 ```
 Her frame'de çağrılır. Tüm kuralları sırayla uygular, ihlal listesi döndürür.
@@ -97,11 +97,11 @@ Her frame'de çağrılır. Tüm kuralları sırayla uygular, ihlal listesi dönd
 #### `StateMachine`
 ```typescript
 class RepStateMachine {
-  transition(
-    landmarks: Landmark[],
-    currentState: RepState,
-    exerciseDef: ExerciseDefinition
-  ): { newState: RepState, repCompleted: boolean }
+ transition(
+ landmarks: Landmark[],
+ currentState: RepState,
+ exerciseDef: ExerciseDefinition
+ ): { newState: RepState, repCompleted: boolean }
 }
 ```
 Rep fazlarını takip eder. Rep tamamlanınca event tetikler.
@@ -109,8 +109,8 @@ Rep fazlarını takip eder. Rep tamamlanınca event tetikler.
 #### `FeedbackGenerator`
 ```typescript
 class FeedbackGenerator {
-  generate(violations: Violation[]): FeedbackMessage[]
-  // Öncelik sıralaması + cooldown + max mesaj sayısı uygulanır
+ generate(violations: Violation[]): FeedbackMessage[]
+ // Öncelik sıralaması + cooldown + max mesaj sayısı uygulanır
 }
 ```
 
@@ -120,15 +120,15 @@ class FeedbackGenerator {
 
 ```typescript
 interface ExerciseDefinition {
-  id: string                       // 'squat', 'pushup', 'biceps-curl'
-  displayName: string              // 'Bodyweight Squat'
-  description: string
-  cameraSetup: CameraSetupConfig   // açı, mesafe, talimatlar
-  visibilityChecks: VisibilityCheck[]  // setup wizard için
-  landmarks: LandmarkRequirement[] // hangi noktalar gerekli
-  rules: Rule[]                    // tüm form kuralları
-  stateMachine: StateMachineConfig // rep fazları + geçiş koşulları
-  thresholds: ThresholdConfig      // ayarlanabilir eşikler
+ id: string // 'squat', 'pushup', 'biceps-curl'
+ displayName: string // 'Bodyweight Squat'
+ description: string
+ cameraSetup: CameraSetupConfig // açı, mesafe, talimatlar
+ visibilityChecks: VisibilityCheck[] // setup wizard için
+ landmarks: LandmarkRequirement[] // hangi noktalar gerekli
+ rules: Rule[] // tüm form kuralları
+ stateMachine: StateMachineConfig // rep fazları + geçiş koşulları
+ thresholds: ThresholdConfig // ayarlanabilir eşikler
 }
 ```
 
@@ -145,9 +145,9 @@ interface ExerciseDefinition {
 #### `PoseDetector` Interface
 ```typescript
 interface PoseDetector {
-  initialize(): Promise<void>
-  detectFrame(frame: ImageData): Landmark[]
-  dispose(): void
+ initialize(): Promise<void>
+ detectFrame(frame: ImageData): Landmark[]
+ dispose(): void
 }
 
 class MediaPipePoseDetector implements PoseDetector { ... }
@@ -157,9 +157,9 @@ class MediaPipePoseDetector implements PoseDetector { ... }
 #### `FrameSource` Interface
 ```typescript
 interface FrameSource {
-  start(): Promise<void>
-  stop(): void
-  onFrame(callback: (frame: ImageData) => void): void
+ start(): Promise<void>
+ stop(): void
+ onFrame(callback: (frame: ImageData) => void): void
 }
 
 class WebcamSource implements FrameSource { ... }
@@ -171,43 +171,43 @@ class VideoFileSource implements FrameSource { ... }
 
 ```
 ┌──────────────────┐
-│ FrameSource      │  Webcam VEYA Video dosyası
-│ (Adapter)        │
+│ FrameSource │ Webcam VEYA Video dosyası
+│ (Adapter) │
 └────────┬─────────┘
-         │ ImageData (her frame)
-         ▼
+ │ ImageData (her frame)
+ ▼
 ┌──────────────────┐
-│ PoseDetector     │  MediaPipe
-│ (Adapter)        │
+│ PoseDetector │ MediaPipe
+│ (Adapter) │
 └────────┬─────────┘
-         │ Landmark[] (33 nokta)
-         ▼
+ │ Landmark[] (33 nokta)
+ ▼
 ┌──────────────────────────────────────┐
-│ Exercise Engine                      │
-│  ┌────────────────────────────────┐  │
-│  │ StateMachine                   │  │  ← ExerciseDefinition
-│  │ (rep fazını günceller)         │  │
-│  └────────────┬───────────────────┘  │
-│               │                      │
-│  ┌────────────▼───────────────────┐  │
-│  │ RuleEvaluator                  │  │  ← ExerciseDefinition.rules
-│  │ (kuralları uygular)            │  │
-│  └────────────┬───────────────────┘  │
-│               │                      │
-│  ┌────────────▼───────────────────┐  │
-│  │ FeedbackGenerator              │  │
-│  │ (mesaj öncelikler, cooldown)   │  │
-│  └────────────┬───────────────────┘  │
+│ Exercise Engine │
+│ ┌────────────────────────────────┐ │
+│ │ StateMachine │ │ ← ExerciseDefinition
+│ │ (rep fazını günceller) │ │
+│ └────────────┬───────────────────┘ │
+│ │ │
+│ ┌────────────▼───────────────────┐ │
+│ │ RuleEvaluator │ │ ← ExerciseDefinition.rules
+│ │ (kuralları uygular) │ │
+│ └────────────┬───────────────────┘ │
+│ │ │
+│ ┌────────────▼───────────────────┐ │
+│ │ FeedbackGenerator │ │
+│ │ (mesaj öncelikler, cooldown) │ │
+│ └────────────┬───────────────────┘ │
 └───────────────┼──────────────────────┘
-                │ Violations + FeedbackMessages
-                ▼
+ │ Violations + FeedbackMessages
+ ▼
 ┌──────────────────┐
-│ Zustand Stores   │  state güncelleme
+│ Zustand Stores │ state güncelleme
 └────────┬─────────┘
-         │
-         ▼
+ │
+ ▼
 ┌──────────────────┐
-│ UI Components    │  re-render
+│ UI Components │ re-render
 └──────────────────┘
 ```
 
@@ -243,72 +243,72 @@ Tüm eşik değerleri kod içinde sabit değil, `exerciseDefinition.thresholds` 
 
 ```
 src/
-├── app/                          # Next.js App Router
-│   ├── page.tsx                  # Landing
-│   ├── exercises/page.tsx        # Egzersiz seçim
-│   ├── exercise/[id]/page.tsx    # Live analyzer
-│   └── layout.tsx
+├── app/ # Next.js App Router
+│ ├── page.tsx # Landing
+│ ├── exercises/page.tsx # Egzersiz seçim
+│ ├── exercise/[id]/page.tsx # Live analyzer
+│ └── layout.tsx
 │
-├── components/                   # React UI komponentleri
-│   ├── camera/
-│   │   ├── CameraView.tsx
-│   │   └── PoseOverlay.tsx       # Canvas overlay
-│   ├── feedback/
-│   │   ├── LiveFeedbackPanel.tsx
-│   │   ├── RepCounter.tsx
-│   │   └── ViolationBadge.tsx
-│   ├── setup-wizard/
-│   │   ├── SetupWizard.tsx
-│   │   ├── SilhouetteGuide.tsx   # Framer Motion siluet
-│   │   └── VisibilityChecks.tsx
-│   ├── session-summary/
-│   │   └── SessionReport.tsx
-│   └── ui/                       # shadcn/ui base (Button, Card, vb.)
+├── components/ # React UI komponentleri
+│ ├── camera/
+│ │ ├── CameraView.tsx
+│ │ └── PoseOverlay.tsx # Canvas overlay
+│ ├── feedback/
+│ │ ├── LiveFeedbackPanel.tsx
+│ │ ├── RepCounter.tsx
+│ │ └── ViolationBadge.tsx
+│ ├── setup-wizard/
+│ │ ├── SetupWizard.tsx
+│ │ ├── SilhouetteGuide.tsx # Framer Motion siluet
+│ │ └── VisibilityChecks.tsx
+│ ├── session-summary/
+│ │ └── SessionReport.tsx
+│ └── ui/ # shadcn/ui base (Button, Card, vb.)
 │
-├── core/                         # PURE TypeScript, UI'dan bağımsız
-│   ├── pose-detection/
-│   │   ├── PoseDetector.ts       # interface
-│   │   ├── MediaPipePoseDetector.ts
-│   │   └── types.ts
-│   ├── frame-source/
-│   │   ├── FrameSource.ts        # interface
-│   │   ├── WebcamSource.ts
-│   │   ├── VideoFileSource.ts
-│   │   └── types.ts
-│   ├── exercise-engine/
-│   │   ├── types.ts              # ExerciseDefinition, Rule, vb.
-│   │   ├── RuleEvaluator.ts
-│   │   ├── StateMachine.ts
-│   │   └── FeedbackGenerator.ts
-│   └── math/
-│       ├── angles.ts             # angle calculations
-│       ├── geometry.ts           # distances, projections
-│       ├── stats.ts              # variance, moving average
-│       └── smoothing.ts          # frame smoothing
+├── core/ # PURE TypeScript, UI'dan bağımsız
+│ ├── pose-detection/
+│ │ ├── PoseDetector.ts # interface
+│ │ ├── MediaPipePoseDetector.ts
+│ │ └── types.ts
+│ ├── frame-source/
+│ │ ├── FrameSource.ts # interface
+│ │ ├── WebcamSource.ts
+│ │ ├── VideoFileSource.ts
+│ │ └── types.ts
+│ ├── exercise-engine/
+│ │ ├── types.ts # ExerciseDefinition, Rule, vb.
+│ │ ├── RuleEvaluator.ts
+│ │ ├── StateMachine.ts
+│ │ └── FeedbackGenerator.ts
+│ └── math/
+│ ├── angles.ts # angle calculations
+│ ├── geometry.ts # distances, projections
+│ ├── stats.ts # variance, moving average
+│ └── smoothing.ts # frame smoothing
 │
-├── exercises/                    # EXERCISE PLUGINS
-│   ├── index.ts                  # registry
-│   ├── squat.ts
-│   ├── pushup.ts
-│   └── biceps-curl.ts
+├── exercises/ # EXERCISE PLUGINS
+│ ├── index.ts # registry
+│ ├── squat.ts
+│ ├── pushup.ts
+│ └── biceps-curl.ts
 │
-├── store/                        # Zustand stores
-│   ├── poseStream.ts
-│   ├── exerciseSession.ts
-│   └── cameraSetup.ts
+├── store/ # Zustand stores
+│ ├── poseStream.ts
+│ ├── exerciseSession.ts
+│ └── cameraSetup.ts
 │
-└── lib/                          # Genel utility
-    ├── i18n/                     # ileride çoklu dil
-    │   └── tr.ts                 # Türkçe mesajlar
-    └── types/
+└── lib/ # Genel utility
+ ├── i18n/ # ileride çoklu dil
+ │ └── tr.ts # Türkçe mesajlar
+ └── types/
 
 tests/
-├── core/                         # core/ klasörü için birim testler
-└── fixtures/                     # test için kaydedilmiş landmark stream'leri
+├── core/ # core/ klasörü için birim testler
+└── fixtures/ # test için kaydedilmiş landmark stream'leri
 
 public/
-├── models/                       # MediaPipe model dosyaları
-└── videos/                       # demo videoları (varsa)
+├── models/ # MediaPipe model dosyaları
+└── videos/ # demo videoları (varsa)
 ```
 
 ## Test Stratejisi (mimari açısından)
@@ -326,11 +326,11 @@ UI testleri sonraki fazda (Playwright). MVP için core test kapsamı yeterli.
 
 - **Hedef:** 30+ FPS modern donanımda
 - **Strateji:**
-  - MediaPipe lite model (heavy model değil) — yeterli hassasiyet, 3x hız
-  - Frame skip: 60FPS kamerada her 2 frame'de bir tespit (etkili 30FPS)
-  - Smoothing & rule evaluation throttling: her frame'de değil, her N ms'de bir
-  - Canvas double-buffering
-  - React re-render minimize: sık güncellenen veriler için `useSyncExternalStore` veya ref pattern
+ - MediaPipe lite model (heavy model değil) — yeterli hassasiyet, 3x hız
+ - Frame skip: 60FPS kamerada her 2 frame'de bir tespit (etkili 30FPS)
+ - Smoothing & rule evaluation throttling: her frame'de değil, her N ms'de bir
+ - Canvas double-buffering
+ - React re-render minimize: sık güncellenen veriler için `useSyncExternalStore` veya ref pattern
 
 ## Genişleme Yolu (Sürümler arası)
 

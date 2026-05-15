@@ -141,8 +141,8 @@ tempo_ratio = eccentric_frames / concentric_frames
 **Hesaplama:**
 ```
 baseline_heel_y = heel_y (ilk DESCENDING frame'inde)
-min_heel_y = iniş + dip boyunca min(heel_y)  # en yüksek topuk konumu
-heel_lift = baseline_heel_y - min_heel_y     # pozitif = topuk yukarı kalktı
+min_heel_y = iniş + dip boyunca min(heel_y) # en yüksek topuk konumu
+heel_lift = baseline_heel_y - min_heel_y # pozitif = topuk yukarı kalktı
 shin_length = |knee_y - ankle_y| (baseline frame'de)
 heel_lift_ratio = heel_lift / shin_length
 ```
@@ -193,10 +193,10 @@ Standing baseline: oturum başında 1 saniyelik kalibrasyon ile alınır.
 ```
 
 ### Tekrar Bittiğinde Üretilen Özet
-- Derinlik (en alt nokta) ✅/⚠️/❌
-- Maks sırt eğim açısı ✅/⚠️/❌
-- Diz pozisyonu ✅/⚠️/❌
-- Tempo ✅/⚠️/❌
+- Derinlik (en alt nokta) //
+- Maks sırt eğim açısı //
+- Diz pozisyonu //
+- Tempo //
 - Hangi an'da en büyük hata yapıldı (timestamp)
 
 ---
@@ -305,7 +305,7 @@ Eccentric (iniş) ≥ 1.5 × concentric (kalkış)
 **Hesaplama:**
 ```
 spine_vector = (hip_x - shoulder_x, hip_y - shoulder_y)
-head_vector  = (nose_x - shoulder_x, nose_y - shoulder_y)
+head_vector = (nose_x - shoulder_x, nose_y - shoulder_y)
 # İdeal: head omuzdan baş yönüne, vücudun tersine uzanır
 neck_angle = angle_between(-spine_vector, head_vector)
 # 0° = baş tam vücut hizasında
@@ -330,8 +330,8 @@ NSCA push-up tekniği rehberi — "neutral head, eyes look at floor slightly for
 **Hesaplama:**
 ```
 TOP state'inde (elbow_angle > 160°) ardışık kaç frame:
-  - |shoulder_y_velocity| yakın sıfır
-  - elbow_angle değişimi minimal
+ - |shoulder_y_velocity| yakın sıfır
+ - elbow_angle değişimi minimal
 30 FPS'de 3 frame = 100ms.
 ```
 
@@ -390,9 +390,9 @@ Kullanıcı kameraya hafif yan dönük (yaklaşık 30-45° açıyla). Tek kollu 
 **Hesaplama:**
 ```
 rep_baslangic → rep_son boyunca:
-  elbow_x_values = [elbow_x at every frame]
-  upper_arm_length = mean(distance(shoulder, elbow))
-  stability_ratio = stdev(elbow_x_values) / upper_arm_length
+ elbow_x_values = [elbow_x at every frame]
+ upper_arm_length = mean(distance(shoulder, elbow))
+ stability_ratio = stdev(elbow_x_values) / upper_arm_length
 ```
 
 **Seviyeler:**
@@ -412,11 +412,11 @@ Biseps tek başına curl hareketinde dirseği omuzdan ayırmaz — bu hareket bi
 **Hesaplama:**
 ```
 rep boyunca:
-  hip_center_x = (left_hip_x + right_hip_x) / 2
-  shoulder_center_x = (left_shoulder_x + right_shoulder_x) / 2
-  hip_sway = stdev(hip_center_x) / hip_width
-  shoulder_sway = stdev(shoulder_center_x) / shoulder_width
-  max_sway = max(hip_sway, shoulder_sway)
+ hip_center_x = (left_hip_x + right_hip_x) / 2
+ shoulder_center_x = (left_shoulder_x + right_shoulder_x) / 2
+ hip_sway = stdev(hip_center_x) / hip_width
+ shoulder_sway = stdev(shoulder_center_x) / shoulder_width
+ max_sway = max(hip_sway, shoulder_sway)
 ```
 
 **Seviyeler:**
@@ -433,8 +433,8 @@ rep boyunca:
 **Hesaplama:**
 ```
 elbow_angle = angle(shoulder, elbow, wrist)
-rep_max_extension = max(elbow_angle_over_rep)  # kol en düz
-rep_max_flexion = min(elbow_angle_over_rep)    # kol en bükülü
+rep_max_extension = max(elbow_angle_over_rep) # kol en düz
+rep_max_flexion = min(elbow_angle_over_rep) # kol en bükülü
 ```
 
 **Seviyeler:**
@@ -457,10 +457,10 @@ Eccentric (indirme) ≥ 1.5 × concentric (kaldırma). Eccentric kontrolsüzlük
 **Hesaplama:**
 ```
 baseline_shoulder_y = shoulder_y (rep başlangıcında, kol uzantıda)
-min_shoulder_y     = rep boyunca min(shoulder_y)  # en yüksek omuz konumu
-elevation          = baseline_shoulder_y - min_shoulder_y  # pozitif = omuz kalktı
-upper_arm_length   = mean(|shoulder - elbow|) rep boyunca
-elevation_ratio    = elevation / upper_arm_length
+min_shoulder_y = rep boyunca min(shoulder_y) # en yüksek omuz konumu
+elevation = baseline_shoulder_y - min_shoulder_y # pozitif = omuz kalktı
+upper_arm_length = mean(|shoulder - elbow|) rep boyunca
+elevation_ratio = elevation / upper_arm_length
 ```
 
 **Seviyeler:**
@@ -480,7 +480,7 @@ Biceps brachii izolasyonu için scapular depression (omuz aşağıda) korunmalı
 **Hesaplama:**
 ```
 FLEXED state'inde (elbow_angle < 60°) ardışık kaç frame:
-  elbow_angle değişimi < 2° per frame (stable hold)
+ elbow_angle değişimi < 2° per frame (stable hold)
 30 FPS'de 3 frame = 100ms.
 ```
 
@@ -556,8 +556,8 @@ Her kuralın tüm rep'lerdeki ölçüm değerlerinin variyansı.
 
 ```
 Her kural R için:
-  values = [R'nin her rep'teki ölçüm değeri]
-  consistency_R = 1 / (1 + stdev(values) / mean(|values|))  # 0-1, 1 = mükemmel tutarlı
+ values = [R'nin her rep'teki ölçüm değeri]
+ consistency_R = 1 / (1 + stdev(values) / mean(|values|)) # 0-1, 1 = mükemmel tutarlı
 
 overall_consistency = mean(consistency_R, tüm kurallar)
 ```
@@ -569,9 +569,9 @@ Set'in ikinci yarısında form bozulması.
 
 ```
 Her kural R için:
-  first_half_avg  = avg(R'nin ilk N/2 rep değeri)
-  second_half_avg = avg(R'nin son N/2 rep değeri)
-  degradation_R   = (second_half_avg - first_half_avg) / first_half_avg
+ first_half_avg = avg(R'nin ilk N/2 rep değeri)
+ second_half_avg = avg(R'nin son N/2 rep değeri)
+ degradation_R = (second_half_avg - first_half_avg) / first_half_avg
 
 Kuralların çoğunluğunda > %10 bozulma → yorgunluk uyarısı.
 ```
@@ -617,11 +617,11 @@ Her kural ihlali için **neden olabilir** + **nasıl iyileştirilir** bilgisi. S
 ### Yapı
 ```typescript
 interface Recommendation {
-  ruleId: string                        // 'squat.depth', 'curl.shoulder-elevation' vb.
-  shortLabel: string                    // "Derinlik"
-  likelyCauses: string[]                // 1-3 olası sebep
-  fixes: string[]                       // 1-3 pratik öneri
-  drills?: { title: string; description: string }[]
+ ruleId: string // 'squat.depth', 'curl.shoulder-elevation' vb.
+ shortLabel: string // "Derinlik"
+ likelyCauses: string[] // 1-3 olası sebep
+ fixes: string[] // 1-3 pratik öneri
+ drills?: { title: string; description: string }[]
 }
 ```
 

@@ -24,7 +24,7 @@ Setin bittikten sonra kullanıcının gördüğü ekran. **Projenin imza ekranı
 - **Yorgunluk uyarısı (M2)** — varsa
 
 ### Üçüncül (Detay Paneli, Default Kapalı Accordion)
-- **Kural × Rep heatmap** — 6 kural × N rep grid (✅⚠️❌)
+- **Kural × Rep heatmap** — 6 kural × N rep grid ()
 - **Best rep (M3)** — vurgulanmış bar + "en iyi rep'in buydu, hatırla"
 - **Worst rep (M3)** — vurgulanmış bar + "en zayıf rep'in buydu, üzerinde düşün"
 
@@ -38,40 +38,40 @@ Setin bittikten sonra kullanıcının gördüğü ekran. **Projenin imza ekranı
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  [🦵] Squat × 5 rep                       2dk 14sn     │
-│                                                          │
-│                                                          │
-│                        ╭─────╮                          │
-│                       │  82  │                           │
-│                        ╰─/100╯                           │
-│                                                          │
-│              Set tutarlılığın: 87%                      │
-│                                                          │
+│ [] Squat × 5 rep 2dk 14sn │
+│ │
+│ │
+│ ╭─────╮ │
+│ │ 82 │ │
+│ ╰─/100╯ │
+│ │
+│ Set tutarlılığın: 87% │
+│ │
 ├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  ⚠ En çok yapılan: Derinlik (5 rep'in 3'ünde)          │
-│                                                          │
-│  ► Sebep: Ankle mobility yetersiz olabilir              │
-│  ► Çözüm: Topuğun altına 1 cm kitap koy, tekrar dene    │
-│                                                          │
+│ │
+│ En çok yapılan: Derinlik (5 rep'in 3'ünde) │
+│ │
+│ ► Sebep: Ankle mobility yetersiz olabilir │
+│ ► Çözüm: Topuğun altına 1 cm kitap koy, tekrar dene │
+│ │
 ├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  Rep-by-rep performans:                                  │
-│                                                          │
-│   100 ┤                                                  │
-│    80 ┤   ▓▓▓   ▓▓▓                  ▓▓▓                │
-│    60 ┤   ▓▓▓   ▓▓▓   ▓▓▓             ▓▓▓                │
-│    40 ┤   ▓▓▓   ▓▓▓   ▓▓▓   ▓▓▓       ▓▓▓                │
-│    20 ┤   ▓▓▓   ▓▓▓   ▓▓▓   ▓▓▓       ▓▓▓                │
-│       └───────────────────────────────────                │
-│         1     2     3     4     5                        │
-│                                                          │
-│   ★ En iyi: Rep #1 (95)    ⚠ En zayıf: Rep #4 (45)     │
-│                                                          │
+│ │
+│ Rep-by-rep performans: │
+│ │
+│ 100 ┤ │
+│ 80 ┤ ▓▓▓ ▓▓▓ ▓▓▓ │
+│ 60 ┤ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │
+│ 40 ┤ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │
+│ 20 ┤ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │
+│ └─────────────────────────────────── │
+│ 1 2 3 4 5 │
+│ │
+│ En iyi: Rep #1 (95) En zayıf: Rep #4 (45) │
+│ │
 ├─────────────────────────────────────────────────────────┤
-│  ▼ Kural detayları (tıkla aç)                           │
+│ ▼ Kural detayları (tıkla aç) │
 ├─────────────────────────────────────────────────────────┤
-│  [ Yeni set başlat ]  [ Egzersiz değiştir ]  [ Detay ] │
+│ [ Yeni set başlat ] [ Egzersiz değiştir ] [ Detay ] │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -90,25 +90,25 @@ Setin bittikten sonra kullanıcının gördüğü ekran. **Projenin imza ekranı
 - X ekseni: rep numarası (1, 2, 3, ...)
 - Y ekseni: rep score (0-100)
 - Bar renkleri:
-  - Yeşil: score ≥ 80
-  - Sarı: 60 ≤ score < 80
-  - Kırmızı: score < 60
+ - Yeşil: score ≥ 80
+ - Sarı: 60 ≤ score < 80
+ - Kırmızı: score < 60
 - **Best rep:** altın kontur (2px stroke, gold)
 - **Worst rep:** kırmızı kontur (2px stroke, red-dim)
 - Hover: tooltip ile o rep'in detayı
-  - Hangi kurallar yeşil/sarı/kırmızı
-  - O rep'in özel notu (varsa)
+ - Hangi kurallar yeşil/sarı/kırmızı
+ - O rep'in özel notu (varsa)
 
 ### 3. Kural × Rep Heatmap (Üçüncül, Accordion İçinde)
 
 ```
-                Rep1  Rep2  Rep3  Rep4  Rep5
-Derinlik         ✅    ✅    ⚠️    ❌    ⚠️
-Sırt eğimi       ✅    ✅    ✅    ✅    ✅
-Diz pozisyonu    ✅    ✅    ⚠️    ⚠️    ✅
-Tempo            ✅    ⚠️    ✅    ❌    ✅
-Topuk            ✅    ✅    ✅    ✅    ✅
-Alt pause        ✅    ✅    ✅    ❌    ⚠️
+ Rep1 Rep2 Rep3 Rep4 Rep5
+Derinlik
+Sırt eğimi
+Diz pozisyonu
+Tempo
+Topuk
+Alt pause
 ```
 
 - Tek bakışta "hangi rep'te hangi kural sıkıntılı" görülür
@@ -119,37 +119,37 @@ Alt pause        ✅    ✅    ✅    ❌    ⚠️
 
 ```
 ┌─────────────────────────────────────────────┐
-│ ⚠ Derinlik                                  │
-│                                             │
-│ 5 rep'in 3'ünde derinlik yetersizdi.        │
-│                                             │
-│ Neden olabilir:                             │
-│ • Ankle mobility yetersiz                   │
-│ • Kalça mobilite kısıtlı                    │
-│                                             │
-│ Dene:                                       │
-│ ✓ Topuğunun altına 1 cm kitap koy           │
-│ ✓ Hareket öncesi 5 ankle mobilization      │
-│                                             │
-│ [Drill videosu izle]  (v2'de eklenir)       │
+│ Derinlik │
+│ │
+│ 5 rep'in 3'ünde derinlik yetersizdi. │
+│ │
+│ Neden olabilir: │
+│ • Ankle mobility yetersiz │
+│ • Kalça mobilite kısıtlı │
+│ │
+│ Dene: │
+│ Topuğunun altına 1 cm kitap koy │
+│ Hareket öncesi 5 ankle mobilization │
+│ │
+│ [Drill videosu izle] (v2'de eklenir) │
 └─────────────────────────────────────────────┘
 ```
 
 ## Animasyon ve Mikro Etkileşimler
 
 1. **Sayfa açılışı (1.5 sn):**
-   - Skor gauge: 0'dan final'e animasyonlu sayar
-   - Bar chart: bottom-up animasyon (her bar sırayla 200ms gecikmeyle yükselir)
-   - En sık hata kartı: fade-in + hafif slide-up
+ - Skor gauge: 0'dan final'e animasyonlu sayar
+ - Bar chart: bottom-up animasyon (her bar sırayla 200ms gecikmeyle yükselir)
+ - En sık hata kartı: fade-in + hafif slide-up
 
 2. **Hover etkileşimleri:**
-   - Bar chart'taki bar üzerinde rep detay tooltip
-   - Best rep'in altın konturu yumuşak pulsate (1.5sn'de bir)
-   - CTA butonlarda subtle background shift
+ - Bar chart'taki bar üzerinde rep detay tooltip
+ - Best rep'in altın konturu yumuşak pulsate (1.5sn'de bir)
+ - CTA butonlarda subtle background shift
 
 3. **Accordion açılışı:**
-   - Heatmap fade-in + height animation
-   - Detay rep modal'i: scale + opacity
+ - Heatmap fade-in + height animation
+ - Detay rep modal'i: scale + opacity
 
 **Animasyon prensibi:** Hiçbir animasyon **2 saniyeden uzun** değil. Hız > kalite.
 
@@ -160,19 +160,19 @@ Alt pause        ✅    ✅    ✅    ❌    ⚠️
 Hiç tam rep tamamlanmadı.
 Belki kurulum hatalı veya çok erken durdun?
 
-[ Tekrar dene ]   [ Kurulumu kontrol et ]
+[ Tekrar dene ] [ Kurulumu kontrol et ]
 ```
 
 ### B) Tüm rep mükemmel (5/5 yeşil)
 ```
-🎉 Set mükemmel!
+ Set mükemmel!
 Tüm rep'lerinde tüm kurallar yeşildi.
 
 Bir sonraki adıma hazırsın:
 • Aynı egzersizi daha çok rep'le dene
 • Yeni bir egzersiz keşfet
 
-[ Bir set daha ]   [ Yeni egzersiz ]
+[ Bir set daha ] [ Yeni egzersiz ]
 ```
 
 ### C) Tek rep
@@ -185,7 +185,7 @@ En az 3 rep yapmayı dene.
 
 ### D) Çok hızlı set (5 rep < 10 saniyede)
 ```
-⚡ Çok hızlı yaptın gibi görünüyor.
+ Çok hızlı yaptın gibi görünüyor.
 Tempo kontrolüne dikkat — özellikle eccentric (iniş) fazda yavaşla.
 
 [ Tekrar dene, bu sefer yavaş ]
@@ -193,7 +193,7 @@ Tempo kontrolüne dikkat — özellikle eccentric (iniş) fazda yavaşla.
 
 ### E) Görünürlük kötü (set boyunca düşük confidence)
 ```
-⚠ Kameranın gördüğü veriler eksikti.
+ Kameranın gördüğü veriler eksikti.
 Sonuçlar güvenilir değil.
 
 Olası sebepler:
@@ -201,7 +201,7 @@ Olası sebepler:
 • Bol kıyafet
 • Kameradan çok uzak/yakın
 
-[ Kamera kurulumunu yenile ]   [ Yine de göster ]
+[ Kamera kurulumunu yenile ] [ Yine de göster ]
 ```
 
 ### F) Sistem hatası / kayıt bozuldu
@@ -209,7 +209,7 @@ Olası sebepler:
 Bir şeyler ters gitti, set kaydı kayboldu.
 Tekrar denemek ister misin?
 
-[ Tekrar dene ]   [ Ana sayfa ]
+[ Tekrar dene ] [ Ana sayfa ]
 ```
 
 ## Mobil / Tablet Uyumu
@@ -231,13 +231,13 @@ Tekrar denemek ister misin?
 
 ## Erişilebilirlik (a11y)
 
-- **Renk tek başına anlam taşımaz:** ✅⚠️❌ ikon + metin her zaman birlikte
+- **Renk tek başına anlam taşımaz:** ikon + metin her zaman birlikte
 - **Tab navigasyon:** Tüm CTA'lar klavyeden erişilebilir
 - **Screen reader sırası:**
-  1. "Set tamamlandı: 82 puan"
-  2. "En sık hata: derinlik, 5 rep'in 3'ünde"
-  3. "Önerilen düzeltme: ..."
-  4. Diğer detaylar
+ 1. "Set tamamlandı: 82 puan"
+ 2. "En sık hata: derinlik, 5 rep'in 3'ünde"
+ 3. "Önerilen düzeltme: ..."
+ 4. Diğer detaylar
 - **Kontrast:** WCAG AA (4.5:1 metin, 3:1 büyük metin)
 - **Focus indicators:** Görünür, default browser'dan daha belirgin
 
