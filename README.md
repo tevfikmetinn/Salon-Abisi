@@ -49,8 +49,19 @@ Detaylı tasarım dokümanları `docs/` klasöründe:
 
 ## Mevcut Durum
 
-Planlama fazı. Kod henüz yok — önce tasarım dokümanları, sonra implementasyon.
+- ✅ **Hafta 1 tamamlandı** — Next.js 16 + React 19 + Tailwind 4 scaffold, MediaPipe Tasks Vision entegrasyonu, `/test-pose` sayfasında canlı 33-nokta iskelet tespiti çalışıyor (30+ FPS modern donanımda)
+- 🔜 **Hafta 2** — `core/` soyutlama katmanı: `PoseDetector` ve `FrameSource` interface'leri, MediaPipe + Webcam + VideoFile adapter'ları
+
+## Yerel Çalıştırma
+
+```bash
+cd formkocu
+npm install
+npm run dev
+```
+
+Tarayıcıda `http://localhost:3000` aç — landing'den "Test sayfasını aç" butonuna tıkla veya direkt `/test-pose`'a git.
 
 ## Sonraki Adım
 
-`docs/05-yol-haritasi.md` → Hafta 1: Next.js + MediaPipe kurulumu, ilk iskelet overlay.
+`docs/05-yol-haritasi.md` → Hafta 2: `core/` klasörü, adapter pattern, math utilities (angle/geometry/stats), ilk birim testleri.
