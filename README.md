@@ -1,11 +1,12 @@
 # Gym Uncle / Salon Abisi
 
 > Free, in-browser exercise form analysis. Your video never leaves your device.
+DEMO VERSION
 
 ## Live demo
 
-- **Primary:** [salon-abisi.pages.dev](https://salon-abisi.pages.dev) (Cloudflare Pages)
-- **Mirror:** [tevfikmetinn.github.io/Salon-Abisi](https://tevfikmetinn.github.io/Salon-Abisi/) (GitHub Pages)
+- **Main:** [tevfikmetinn.github.io/Salon-Abisi](https://tevfikmetinn.github.io/Salon-Abisi/) (GitHub Pages)
+- **Cloudflare vers:** [salon-abisi.pages.dev](https://salon-abisi.pages.dev) 
 
 **Languages:** English · Türkçe (in-app toggle)
 
@@ -89,15 +90,18 @@ Salon-Abisi/
 ## Roadmap
 
 See [FUTURE.md](FUTURE.md). Short version:
-- More exercises (plank, lunge, glute bridge)
-- More form checks per exercise
-- Session history (still local-only)
-- Audio cues
+- This is only a demo version. Development will continue.
+More exercises
+- More detailed analysis at specific angles.
+- A mobile-friendly version.
+- Greater movement control for each exercise
+- Workout history (currently available only locally)
+- Audio alerts
+- A plan integrated with machines, cables, and all related fitness equipment.
 
 ## Why "Gym Uncle" / "Salon Abisi"?
 
-In Turkish gym culture, the _"salon abisi"_ is the slightly older, more experienced lifter who quietly tells you how to fix your form when you're about to hurt yourself. This is a digital one.
-
+Kardeşim o hareketi yanlış yapıyosun.
 ## License
 
 MIT. Use it, fork it, ship it.
