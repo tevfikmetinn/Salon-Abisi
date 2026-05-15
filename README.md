@@ -2,6 +2,8 @@
 
 > Free, in-browser exercise form analysis. Privacy by architecture — video never leaves your device.
 
+**🚀 Live demo:** [salon-abisi.pages.dev](https://salon-abisi.pages.dev)
+
 **Status:** Demo version, actively developed. Not production-ready.
 **Languages:** English · Turkish (toggle in-app)
 

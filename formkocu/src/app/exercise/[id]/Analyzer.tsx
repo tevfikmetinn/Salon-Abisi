@@ -201,7 +201,7 @@ function ExerciseAnalyzer({
   return (
     <main className="min-h-screen bg-gradient-to-b from-neutral-950 to-neutral-900 text-white p-4 md:p-8">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-6 flex items-start justify-between gap-4 pr-24">
+        <header className="mb-6 flex items-start justify-between gap-3 pr-16 md:pr-24">
           <div>
             <Link
               href="/"

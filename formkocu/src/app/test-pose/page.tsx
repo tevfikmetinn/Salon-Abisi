@@ -181,7 +181,7 @@ export default function TestPosePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-neutral-950 to-neutral-900 text-white p-6 md:p-10">
-      <div className="max-w-5xl mx-auto pr-16">
+      <div className="max-w-5xl mx-auto pr-14 md:pr-16">
         <header className="mb-6">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
             {t.ui.testPose.title}
