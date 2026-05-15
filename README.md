@@ -1,67 +1,130 @@
-# FormKoçu (Çalışma Adı)
+# Gym Uncle / Salon Abisi
 
-> Spora yeni başlayanlara doğru egzersiz formunu, tamamen tarayıcıda, ücretsiz olarak öğreten web uygulaması.
+> Free, in-browser exercise form analysis. Privacy by architecture — video never leaves your device.
 
-## Bu Proje Nedir?
+**Status:** Demo version, actively developed. Not production-ready.
+**Languages:** English · Turkish (toggle in-app)
 
-FormKoçu, **bilgisayarındaki kamerayı kullanarak** (veya video yükleyerek) bir kullanıcının squat, şınav ve dambıl curl gibi temel egzersizlerini analiz eden, **gerçek zamanlı geri bildirim veren** bir web uygulamasıdır.
+---
 
-Hedef kitle: **Spora yeni başlayan, evde antrenman yapan, doğru formu kimseye sormadan öğrenmek isteyen kişi.**
+## What it does
 
-## Temel Prensipler
+You open the page, point your webcam at yourself, and do bodyweight exercises. The app:
 
-1. **Ücretsiz, sonsuza kadar.** Abonelik, hesap, kart yok.
-2. **%100 tarayıcıda.** Video sunucuya gitmez — kamera görüntün senin cihazından çıkmaz.
-3. **Açıklanabilir geri bildirim.** "Yanlış" demez, "dizin 8° içeri kaydı, ayak başparmağına doğrultmaya çalış" der.
-4. **Niş ve derinlik.** 100 egzersiz değil, 3 egzersizi mükemmel yapan bir uygulama.
-5. **Biyomekanik temelli.** Kara kutu ML değil, koçluk literatüründen kurallar.
+- **Detects 33 body landmarks** in real-time with MediaPipe (runs entirely in the browser via WebAssembly)
+- **Counts your reps** using angle-based state machines (camera-distance independent)
+- **Checks your form** against simple biomechanical rules
+- **Summarizes your set** with a score, rep count, and most common feedback
 
-## MVP Egzersizleri
+No accounts. No subscriptions. No uploads. Your camera data stays on your device.
 
-| Egzersiz | Açı | Ana Kontroller |
-|---|---|---|
-| Bodyweight Squat | Yan profil | Derinlik, sırt eğimi, diz pozisyonu, tempo |
-| Şınav (Push-up) | Yan profil | Vücut hizası, dirsek açısı, derinlik, tempo |
-| Dambıl Biceps Curl | Ön ¾ açı | Üst kol stabilitesi, vücut sallama, ROM, tempo |
+## Currently supported exercises
 
-## Dokümantasyon
+| Exercise | Camera | Primary signal | Form checks |
+|---|---|---|---|
+| Bodyweight Squat | Side view | Knee angle | Depth |
+| Push-up | Side view, low angle | Elbow angle | Depth |
+| Dumbbell Biceps Curl | ¾ angle | Active arm elbow angle | Range of motion |
 
-Detaylı tasarım dokümanları `docs/` klasöründe:
+The active arm in curl is auto-detected (you can use left, right, or alternating).
 
-1. [Vizyon ve Kapsam](docs/01-vizyon-ve-kapsam.md) — Hedef kitle, MVP sınırları, başarı kriterleri
-2. [Egzersiz Spesifikasyonları](docs/02-egzersiz-spekleri.md) — Her egzersiz için biyomekanik kurallar ve kaynaklar
-3. [Mimari](docs/03-mimari.md) — Eklenti tabanlı sistem tasarımı, ileriye dönük genişleme
-4. [Teknoloji Yığını](docs/04-teknoloji-yigini.md) — Seçimler ve gerekçeler
-5. [Yol Haritası](docs/05-yol-haritasi.md) — 10 haftalık plan
-6. [Doğrulama Planı](docs/06-dogrulama-plani.md) — Test ve uzman onayı stratejisi
-7. [Set Sonu Özet Ekranı](docs/07-set-sonu-ekrani.md) — Summary UI tasarımı, visualizasyonlar, eylem CTA'ları
+## Screenshots
 
-## Teknoloji Özeti
+> _Screenshots will be added here after first user test._
 
-- **Framework:** Next.js 14 (App Router) + TypeScript (strict)
-- **Computer Vision:** MediaPipe Tasks Vision (tarayıcıda WASM, 33 vücut noktası)
-- **State:** Zustand
-- **UI:** Tailwind CSS + shadcn/ui + Framer Motion
-- **Test:** Vitest
-- **Deployment:** Vercel (free tier)
+- **Home page:** `docs/screenshots/home.png`
+- **Squat live analyzer:** `docs/screenshots/squat-live.png`
+- **Set summary:** `docs/screenshots/set-summary.png`
+- **Language toggle (TR ↔ EN):** `docs/screenshots/locale-toggle.png`
 
-**Toplam maliyet: 0 TL.**
+## Tech stack
 
-## Mevcut Durum
+- **Framework:** Next.js 16 (App Router) + React 19
+- **Computer vision:** MediaPipe Tasks Vision (`pose_landmarker_full`, runs in WebAssembly with GPU delegate)
+- **Styling:** Tailwind CSS 4
+- **Type safety:** TypeScript (strict mode)
+- **Testing:** Vitest (27 unit tests passing)
+- **Deployment target:** Vercel (free tier)
 
-- ✅ **Hafta 1 tamamlandı** — Next.js 16 + React 19 + Tailwind 4 scaffold, MediaPipe Tasks Vision entegrasyonu, `/test-pose` sayfasında canlı 33-nokta iskelet tespiti çalışıyor (30+ FPS modern donanımda)
-- 🔜 **Hafta 2** — `core/` soyutlama katmanı: `PoseDetector` ve `FrameSource` interface'leri, MediaPipe + Webcam + VideoFile adapter'ları
+**Total cost to ship and run:** $0. Everything is open source or free-tier.
 
-## Yerel Çalıştırma
+## How it works
+
+1. **Pose detection** — MediaPipe's pre-trained model identifies 33 body landmarks per frame
+2. **Primary angle** — Each exercise computes a single primary angle (knee for squat, elbow for push-up/curl)
+3. **State machine** — Simple 2-state automaton: `REST` ↔ `PEAK`. A rep is a full round-trip
+4. **Rule evaluation** — At rep completion, biomechanical rules check the rep's metrics (e.g., minimum angle reached)
+5. **Set summary** — On finish, score is the percentage of reps with clean form
+
+The architecture is **plugin-based**: each exercise lives in its own file (`src/exercises/<id>.ts`). Adding a new exercise = adding a new file. No changes to core code.
+
+See `docs/03-mimari.md` for the full architecture (currently in Turkish).
+
+## Run locally
+
+Requires Node.js 20+ and npm.
 
 ```bash
-cd formkocu
+git clone https://github.com/tevfikmetinn/Salon-Abisi.git
+cd Salon-Abisi/formkocu
 npm install
 npm run dev
 ```
 
-Tarayıcıda `http://localhost:3000` aç — landing'den "Test sayfasını aç" butonuna tıkla veya direkt `/test-pose`'a git.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Sonraki Adım
+### Other scripts
 
-`docs/05-yol-haritasi.md` → Hafta 2: `core/` klasörü, adapter pattern, math utilities (angle/geometry/stats), ilk birim testleri.
+```bash
+npm run build         # production build
+npm run test          # watch mode tests
+npm run test:run      # single run (CI mode)
+npm run test:coverage # with coverage report
+npm run lint          # eslint
+```
+
+## Project structure
+
+```
+Salon-Abisi/
+├── README.md                    # this file
+├── docs/                        # design documents (Turkish)
+│   ├── 01-vizyon-ve-kapsam.md   # vision and scope
+│   ├── 02-egzersiz-spekleri.md  # exercise specifications
+│   ├── 03-mimari.md             # architecture
+│   ├── 04-teknoloji-yigini.md   # tech stack rationale
+│   ├── 05-yol-haritasi.md       # roadmap (development log)
+│   ├── 06-dogrulama-plani.md    # validation plan
+│   └── 07-set-sonu-ekrani.md    # summary screen design
+├── FUTURE.md                    # future development ideas
+└── formkocu/                    # Next.js app
+    ├── src/
+    │   ├── app/                 # routes (home, exercise/[id], test-pose)
+    │   ├── core/                # pure TypeScript engine
+    │   │   ├── pose-detection/  # MediaPipe wrapper
+    │   │   ├── frame-source/    # webcam + video file adapters
+    │   │   ├── exercise-engine/ # session, state machine, types
+    │   │   └── math/            # angle calculations
+    │   ├── exercises/           # plugins: squat, pushup, curl
+    │   ├── lib/i18n/            # internationalization (EN/TR)
+    │   └── components/          # shared UI
+    └── package.json
+```
+
+## Roadmap
+
+See [FUTURE.md](FUTURE.md) for planned improvements.
+
+## Why "Gym Uncle" / "Salon Abisi"?
+
+In Turkish gym culture, the _"salon abisi"_ is the slightly older, more experienced lifter who quietly corrects your form when you're about to hurt yourself. This app is a digital version of that — free advice from someone who's been there.
+
+## License
+
+MIT — use it, fork it, ship it.
+
+## Built by
+
+Tevfik Metin (2nd-year software engineering student). Portfolio project — feedback welcome.
+
+🤖 _Developed in collaboration with Claude (Anthropic) for architecture decisions and iteration._
